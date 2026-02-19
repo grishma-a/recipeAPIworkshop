@@ -7,7 +7,7 @@ const recipeContainer = document.querySelector('.recipe-container');
 
 //for recipe details
 const recipeDetailsContent = document.querySelector('.recipe-details-content');
-// const recipeCloseBtn = document.querySelector('.recipe-close-btn');
+const recipeCloseBtn = document.querySelector('.recipe-close-btn');
 
 
 searchBtn.addEventListener('click', (e) => {
@@ -75,8 +75,36 @@ const fetchRecipes = async (query) => {
 }
 
 const openRecipePopup = (meal) => {
-    recipeDetailsContent.textContent = `
-        <h2>${meal.strMeal}</h2>
+    //add the classes to style it later
+    recipeDetailsContent.innerHTML = `
+        <h2 class ="recipeName">${meal.strMeal}</h2>
+        <h3>Ingredients: </h3>
+        <ul class="ingredientsList">${fetchIngredients(meal)}</ul>
+        <div>
+            <h3>Instructions: </h3>
+            <p class="recipeInstructions">${meal.strInstructions}</p>
+        </div>
     `
     recipeDetailsContent.parentElement.style.display = 'block';
 }
+
+//to get ingredients and measurements
+const fetchIngredients = (meal) => {
+    let ingredientList = "";
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`];
+        if (ingredient) {
+            const measure = meal[`strMeasure${i}`];
+            ingredientList += `<li>${measure} ${ingredient}</li>`;
+        } else {
+            break;
+        }
+    }
+    return ingredientList;
+}
+
+
+recipeCloseBtn.addEventListener('click', () => {
+    recipeDetailsContent.parentElement.style.display = 'none';
+    //this line hides the recipe details popup when the close button is clicked by setting the display property of the parent element of recipeDetailsContent to 'none'.
+})

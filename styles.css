@@ -96,14 +96,24 @@ button[type="submit"] {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #721717;
+    -webkit-transform: translate(-50%, -50%);
+    border-radius: 12px;
+    width: 40%;
+    height: 60%;
+    font-size: 20px;
 
+    /*this is for the scrollbar for the popup*/
+    overflow-y: scroll;
 }
 
 .recipe-details-content {
-
     color: black;
     padding: 20px;
     border-radius: 10px;
     max-width: 80%;
     margin: 5% auto;
+}
+
+.recipe-details::-webkit-scrollbar {
+    width: 10px;
 }
