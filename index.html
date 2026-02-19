@@ -4,15 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Website</title>
     <!-- Link the CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first paragraph.</p>
-    <!-- Link the JS file -->
+    <header>
+        <nav>
+            <h1>RECIPE DEMO API</h1>
+
+            <form>
+                <input type="text" placeholder="Search for a recipe..." class=searchBox>
+                <button type="submit" class="searchBtn">Search</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="recipe-container"></div>
+            <div class="recipe-details">
+                <button type="button" class="recipe-close-btn">Close </button>
+                <div class="recipe-details-content"></div>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 
