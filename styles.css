@@ -51,9 +51,59 @@ button[type="submit"] {
     /*auto-fit: automatically fit as many columns as possible based on the available space.
     minmax(250px, 1fr): each column will have a minimum width of 250 pixels and a maximum width of 1 fraction unit (1fr), which means it will take up an equal share of the available space.*/
     /*then look at dev tools, instead of a long list its now horizontal*/
-    grid-gap: 40px;
+    grid-gap: 60px;
     width: 80%;
-    margin: 10px auto;
+
+    /*starting here were formatting the images that are produced in the search*/
+    margin: 20px auto;
+    padding: 50px;
+    place-items: center;
+    /*this centers the items in the grid both horizontally and vertically*/
 
 
+}
+
+/*as we can see from line 37 of js the classList add recipe, we have a recipe class so lets format that too*/
+.recipe {
+    background-color: #fff;
+    display: flex;
+    /*this makes the recipe div a flex container so that its children (the image and text) are laid out in a row*/
+    flex-direction: column;
+    /*this arranges the children in a column instead of a row*/
+    color: black;
+    /*this is so you can see the text in the recipe divs*/
+    border-radius: 6px;
+    /*this adds rounded corners to the recipe divs*/
+    max-width: 350px;
+
+}
+
+.recipe button {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 18 auto;
+    /*this centers the button horizontally within the recipe div*/
+}
+
+
+/*for recipe details popup*/
+.recipe-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #721717;
+
+}
+
+.recipe-details-content {
+
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 5% auto;
 }

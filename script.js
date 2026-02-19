@@ -5,6 +5,11 @@ const recipeContainer = document.querySelector('.recipe-container');
 //'.searchBox': The CSS selector looking for an element with class="searchBox".
 
 
+//for recipe details
+const recipeDetailsContent = document.querySelector('.recipe-details-content');
+// const recipeCloseBtn = document.querySelector('.recipe-close-btn');
+
+
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault(); //this prevents the default behavior of the button, which is to submit the form and refresh the page. -> allows the button was clicked message to stay
     //add the e in the () and the line above after typing the console log
@@ -20,6 +25,8 @@ const fetchRecipes = async (query) => {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
 
     const response = await data.json(); //this converts the data to json format so that we can work with it easily in javascript.
+
+    recipeContainer.innerHTML = ""; //this clears the recipe container before displaying new recipes.this is so that we dont have "Serach your favorite recipes" and the new recipes at the same time
     console.log(response);
     //await keyword means that the function will wait for the promise to resolve before moving on to the next line of code. 
     //add await after and then async
@@ -41,11 +48,35 @@ const fetchRecipes = async (query) => {
             <p>${meal.strCategory}</p>
 
         `
+
+
         //this line sets the inner HTML of the recipeDiv element to an image tag with the source set to the meal's thumbnail image URL from the API response.
-        recipeContainer.appendChild(recipeDiv);
+
+        //recipeContainer.appendChild(recipeDiv);
+
         //this line appends the recipeDiv element to the recipeContainer element in the HTML document. this is so that the recipe is displayed on the webpage.
 
-        //go back to dev tools and look at the images
+        //go back to dev tools and look at the images (button goes on top but do it after recipeContainer line)
+
+        const button = document.createElement('button');
+        button.textContent = "View Recipe";
+        recipeDiv.appendChild(button);
+
+        //now we need to add the eventlistened to the recipe button so that when we click on it, it will show us the recipe instructions.
+        button.addEventListener('click', () => {
+            openRecipePopup(meal);
+        });
+
+
+
+        recipeContainer.appendChild(recipeDiv);
     });
 
+}
+
+const openRecipePopup = (meal) => {
+    recipeDetailsContent.textContent = `
+        <h2>${meal.strMeal}</h2>
+    `
+    recipeDetailsContent.parentElement.style.display = 'block';
 }
