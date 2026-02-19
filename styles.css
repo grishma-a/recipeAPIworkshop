@@ -95,8 +95,8 @@ button[type="submit"] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /*this centers the popup on the screen by moving it 50% from the top and left, and then translating it back by 50% of its own width and height*/
     background-color: #721717;
-    -webkit-transform: translate(-50%, -50%);
     border-radius: 12px;
     width: 40%;
     height: 60%;
@@ -112,8 +112,4 @@ button[type="submit"] {
     border-radius: 10px;
     max-width: 80%;
     margin: 5% auto;
-}
-
-.recipe-details::-webkit-scrollbar {
-    width: 10px;
 }

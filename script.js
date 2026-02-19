@@ -75,14 +75,13 @@ const fetchRecipes = async (query) => {
 }
 
 const openRecipePopup = (meal) => {
-    //add the classes to style it later
     recipeDetailsContent.innerHTML = `
-        <h2 class ="recipeName">${meal.strMeal}</h2>
+        <h2 >${meal.strMeal}</h2>
         <h3>Ingredients: </h3>
-        <ul class="ingredientsList">${fetchIngredients(meal)}</ul>
+        <ul >${fetchIngredients(meal)}</ul>
         <div>
             <h3>Instructions: </h3>
-            <p class="recipeInstructions">${meal.strInstructions}</p>
+            <p >${meal.strInstructions}</p>
         </div>
     `
     recipeDetailsContent.parentElement.style.display = 'block';
@@ -100,6 +99,7 @@ const fetchIngredients = (meal) => {
             break;
         }
     }
+    //this function loops through the ingredients and measurements in the meal object and creates a list of ingredients with their corresponding measurements. it checks if the ingredient exists (not empty) and if it does, it adds it to the ingredientList string in the form of a list item. if it encounters an empty ingredient, it breaks out of the loop.
     return ingredientList;
 }
 
